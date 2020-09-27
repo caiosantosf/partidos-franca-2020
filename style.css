@@ -1,9 +1,3 @@
-html {
-  overflow-y: scroll;
-}
-a {
-  color: #cccccc !important;
-}
 body {
   background-color: #eff2f4;
   font-family: 'Roboto', Helvetica, "Lucida", Arial, sans-serif;
@@ -11,178 +5,27 @@ body {
   font-size: 14px;
   color: #5e5e5e;
 }
-ul,
-ol {
-  list-style: none;
-}
-.container {
-  width: 600px;
-  margin: 0 auto;
-}
-h2 {
-  font-weight: 400;
+p {
+  font-size: 16px;
 }
 .section-content {
   width: 90%;
   margin: 0 auto;
-  position: fixed;
-  top: 5px;
-  left: 0;
-  bottom: 0px;
-  right: 0;
-  padding: 0px;
 }
-.graph-overdue .graph-level1 .graph-bar,
-.graph-overdue .graph-level1 .graph-icon {
-  background: #00aeef;
-  border-right: 1px solid #d8d8d8;
+@media (max-width: 600px) 
+{
+  .section-content 
+   {
+    width: 100%;
+   }
 }
-.graph-overdue .graph-level2 .graph-bar,
-.graph-overdue .graph-level3 .graph-icon {
-  background: #ff9900;
-  border-right: 1px solid #d8d8d8;
-  color: #ffffff;
+h3 {
+  margin-right: 5px;
 }
-.graph-overdue .graph-level3 .graph-bar,
-.graph-overdue .graph-level4 .graph-icon {
-  background: #ff0000;
-  color: #ffffff;
+.chapa-content{
+  margin-bottom: 30px;
 }
-.graph-overdue .graph-level4 .graph-bar,
-.graph-overdue .graph-level4 .graph-icon {
-  background: #ff1493;
-  color: #ffffff;
-}
-.graph-overdue .graph-level5 .graph-bar,
-.graph-overdue .graph-level4 .graph-icon {
-  background: #7e3794;
-  color: #ffffff;
-}
-.graph-overdue .graph-pointer-border,
-.graph-overdue .graph-pointer-back {
-  width: 0;
-  height: 0;
-  border-bottom: 0;
-  position: absolute;
-}
-.graph-overdue .graph-level1 {
-  width: 70%;
-  position: absolute;
-  z-index: 4;
-  border-right: 1px solid #d8d8d8;
-}
-.graph-overdue .graph-level1 .graph-pointer-back {
-  border-top-color: #00aeef;
-}
-.graph-overdue .graph-level2 {
-  width: 85%;
-  position: absolute;
-  z-index: 3;
-  border-right: 1px solid #d8d8d8;
-}
-.graph-overdue .graph-level2 .graph-pointer-back {
-  border-top-color: #ff0000;
-}
-.graph-overdue .graph-level3 {
-  width: 100%;
-  position: absolute;
-  z-index: 2;
-  border-right: 1px solid #d8d8d8;
-}
-.graph-overdue .graph-level3 .graph-pointer-back {
-  border-top-color: #ff9900;
-}
-.graph-overdue .graph-level4 {
-  width: 95%;
-  position: absolute;
-  z-index: 1;
-  border-right: 1px solid #d8d8d8;
-}
-.graph-overdue .graph-level4 .graph-pointer-back {
-  border-top-color: #ff1493;
-}
-.graph-overdue .graph-level5 {
-  width: 100%;
-  position: absolute;
-  z-index: 0;
-  border-right: 1px solid #d8d8d8;
-}
-.graph-overdue .graph-level5 .graph-pointer-back {
-  border-top-color: #7e3794;
-}
-.graph-overdue .graph-section {
-  float: left;
-  cursor: default;
-}
-.graph-overdue .graph-bar {
-  width: 100%;
-  height: 17px;
-  margin-bottom: 5px;
-  box-shadow: 0px 2px 4px 0 #cccccc;
-}
-.graph-overdue .graph-caption1 {
-  text-align: right;
-  font-size: 12px;
-  margin-top: 10px;
-  padding-right: 3px;
-}
-.graph-overdue .graph-caption1 span {
-  font-size: 18px;
-  font-weight: 600;
-  color: #00aeef;
-}
-.graph-overdue .graph-caption2 {
-  text-align: right;
-  font-size: 12px;
-  margin-top: 50px;
-  word-wrap: break-word;
-  padding-right: 3px;
-}
-.graph-overdue .graph-caption2 span {
-  font-size: 18px;
-  font-weight: 600;
-  color: #ff9900;
-}
-.graph-overdue .graph-caption3 {
-  text-align: right;
-  font-size: 12px;
-  margin-top: 100px;
-  padding-right: 3px;
-}
-.graph-overdue .graph-caption3 span {
-  font-size: 18px;
-  font-weight: 600;
-  color: #ff0000;
-}
-.graph-overdue .graph-caption4 {
-  text-align: right;
-  font-size: 12px;
-  margin-top: 100px;
-  padding-right: 3px;
-}
-.graph-overdue .graph-caption4 span {
-  font-size: 18px;
-  font-weight: 600;
-  color: #ff1493;
-}
-.graph-overdue .graph-caption5 {
-  text-align: right;
-  font-size: 12px;
-  margin-top: 150px;
-  padding-right: 3px;
-}
-.graph-overdue .graph-caption5 span {
-  font-size: 18px;
-  font-weight: 600;
-  color: #7e3794;
-}
-.graph-overdue .graph-pointer-back {
-  border: 5px solid transparent;
-  border-top-color: #00aeef;
-  left: -5px;
-}
-.graph-overdue .graph-pointer {
-  position: absolute;
-  bottom: 0;
-  left: 14px;
+.header{
+  display: flex;
+  justify-content: baseline;
 }
