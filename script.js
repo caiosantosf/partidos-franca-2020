@@ -58,7 +58,7 @@ const getGraph = (siglas, novatos, jaCandidatos, jaVereadores, atuaisVereadores)
 }
 
 const getData = async _ => {
-  const { candidatos } = await fetchAsync('json\\canidatos.json')
+  const { candidatos } = await fetchAsync('json\\candidatos.json')
 
   candidatos.sort((a, b) => {
     if ( a.nomeColigacao < b.nomeColigacao ){
