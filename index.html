@@ -10,15 +10,99 @@
     <div class="section-content">
       <div align= "center">
         <h1>Partidos em Franca Eleições 2020</h1>
-        
-        <p>Ao escolher um candidato à vereador, além de conhecer sua história e suas propostas, é importante conhecer o seu partido tambem. O voto no Brasil é por legenda, sendo assim quando você vota em um candidato você pode estar ajudando a eleger outros políticos do partido dele. Procure dar preferência a candidatos de partidos que no geral tenham ideais e ideologias parecidas com as suas.</p>
-        <p>Outro ponto a se levar em consideração é a "elegibilidade" das chapa partidárias. Os partidos para elegerem vereadores precisam atingir o cosciente eleitoral que é o resultado da divisão da quantidade de eleitores pela quantidade de vagas na câmara municipal. Sendo assim um candidato em um partido com poucos candidatos tem menos chances de se eleger.</p>
-        
+
         <h2>Os gráficos abaixo podem te ajudar a ficar mais por dentro de como ficaram as chapas do partidos em Franca</h3>
       </div>
 
-      <div id="chart"></div>
+      <br>
+      <h3 style="margin-bottom: -15px;">► Candidatos em relação a eleições anteriores</h3>
+      <div id="chartEleicoesAnteriores"></div>
 
+      <br>
+      <h3 style="margin-bottom: -15px;">► Valor médio do valor dos bens declarados</h3>
+      <div id="chartBens"></div>
+
+      <br>
+      <h3 style="margin-bottom: -15px;">► Idade média dos candidatos</h3>
+      <div id="chartIdade"></div>
+      
+      <br>
+      <h3>► Candidatos por cor / raça</h3>
+      <div class="header">
+        <div><span>CIDADANIA</span><div id="chartEleicoesRaca1"></div></div>
+        <div><span>DEM</span><div id="chartEleicoesRaca2"></div></div>
+        <div><span>MDB</span><div id="chartEleicoesRaca3"></div></div>
+        <div><span>PATRIOTA</span><div id="chartEleicoesRaca4"></div></div>
+        <div><span>PC do B</span><div id="chartEleicoesRaca5"></div></div>
+        <div><span>PDT</span><div id="chartEleicoesRaca6"></div></div>
+        <div><span>PL</span><div id="chartEleicoesRaca7"></div></div>
+        <div><span>PODE</span><div id="chartEleicoesRaca8"></div></div>
+        <div><span>PP</span><div id="chartEleicoesRaca9"></div></div>
+        <div><span>PROS</span><div id="chartEleicoesRaca10"></div></div>
+        <div><span>PRTB</span><div id="chartEleicoesRaca11"></div></div>
+        <div><span>PSB</span><div id="chartEleicoesRaca12"></div></div>
+        <div><span>PSC</span><div id="chartEleicoesRaca13"></div></div>
+        <div><span>PSD</span><div id="chartEleicoesRaca14"></div></div>
+        <div><span>PSDB</span><div id="chartEleicoesRaca15"></div></div>
+        <div><span>PSL</span><div id="chartEleicoesRaca16"></div></div>
+        <div><span>PSOL</span><div id="chartEleicoesRaca17"></div></div>
+        <div><span>PT</span><div id="chartEleicoesRaca18"></div></div>
+        <div><span>PTB</span><div id="chartEleicoesRaca19"></div></div>
+        <div><span>REPUBLICANOS</span><div id="chartEleicoesRaca20"></div></div>
+        <div><span>SOLIDARIEDADE</span><div id="chartEleicoesRaca21"></div></div>
+      </div>
+
+      <br>
+      <h3>► Candidatos por gênero</h3>
+      <div class="header">
+        <div><span>CIDADANIA</span><div id="chartEleicoesGenero1"></div></div>
+        <div><span>DEM</span><div id="chartEleicoesGenero2"></div></div>
+        <div><span>MDB</span><div id="chartEleicoesGenero3"></div></div>
+        <div><span>PATRIOTA</span><div id="chartEleicoesGenero4"></div></div>
+        <div><span>PC do B</span><div id="chartEleicoesGenero5"></div></div>
+        <div><span>PDT</span><div id="chartEleicoesGenero6"></div></div>
+        <div><span>PL</span><div id="chartEleicoesGenero7"></div></div>
+        <div><span>PODE</span><div id="chartEleicoesGenero8"></div></div>
+        <div><span>PP</span><div id="chartEleicoesGenero9"></div></div>
+        <div><span>PROS</span><div id="chartEleicoesGenero10"></div></div>
+        <div><span>PRTB</span><div id="chartEleicoesGenero11"></div></div>
+        <div><span>PSB</span><div id="chartEleicoesGenero12"></div></div>
+        <div><span>PSC</span><div id="chartEleicoesGenero13"></div></div>
+        <div><span>PSD</span><div id="chartEleicoesGenero14"></div></div>
+        <div><span>PSDB</span><div id="chartEleicoesGenero15"></div></div>
+        <div><span>PSL</span><div id="chartEleicoesGenero16"></div></div>
+        <div><span>PSOL</span><div id="chartEleicoesGenero17"></div></div>
+        <div><span>PT</span><div id="chartEleicoesGenero18"></div></div>
+        <div><span>PTB</span><div id="chartEleicoesGenero19"></div></div>
+        <div><span>REPUBLICANOS</span><div id="chartEleicoesGenero20"></div></div>
+        <div><span>SOLIDARIEDADE</span><div id="chartEleicoesGenero21"></div></div>
+      </div>
+
+      <br>
+      <h3>► Candidatos por escolaridade</h3>
+      <div class="header">
+        <div><span>CIDADANIA</span><div id="chartEleicoesEscolaridade1"></div></div>
+        <div><span>DEM</span><div id="chartEleicoesEscolaridade2"></div></div>
+        <div><span>MDB</span><div id="chartEleicoesEscolaridade3"></div></div>
+        <div><span>PATRIOTA</span><div id="chartEleicoesEscolaridade4"></div></div>
+        <div><span>PC do B</span><div id="chartEleicoesEscolaridade5"></div></div>
+        <div><span>PDT</span><div id="chartEleicoesEscolaridade6"></div></div>
+        <div><span>PL</span><div id="chartEleicoesEscolaridade7"></div></div>
+        <div><span>PODE</span><div id="chartEleicoesEscolaridade8"></div></div>
+        <div><span>PP</span><div id="chartEleicoesEscolaridade9"></div></div>
+        <div><span>PROS</span><div id="chartEleicoesEscolaridade10"></div></div>
+        <div><span>PRTB</span><div id="chartEleicoesEscolaridade11"></div></div>
+        <div><span>PSB</span><div id="chartEleicoesEscolaridade12"></div></div>
+        <div><span>PSC</span><div id="chartEleicoesEscolaridade13"></div></div>
+        <div><span>PSD</span><div id="chartEleicoesEscolaridade14"></div></div>
+        <div><span>PSDB</span><div id="chartEleicoesEscolaridade15"></div></div>
+        <div><span>PSL</span><div id="chartEleicoesEscolaridade16"></div></div>
+        <div><span>PSOL</span><div id="chartEleicoesEscolaridade17"></div></div>
+        <div><span>PT</span><div id="chartEleicoesEscolaridade18"></div></div>
+        <div><span>PTB</span><div id="chartEleicoesEscolaridade19"></div></div>
+        <div><span>REPUBLICANOS</span><div id="chartEleicoesEscolaridade20"></div></div>
+        <div><span>SOLIDARIEDADE</span><div id="chartEleicoesEscolaridade21"></div></div>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>

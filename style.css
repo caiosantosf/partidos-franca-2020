@@ -26,6 +26,8 @@ h3 {
   margin-bottom: 30px;
 }
 .header{
+  width: 100%;
   display: flex;
-  justify-content: baseline;
+  flex-flow: row wrap;
+  justify-content: flex-start;
 }
