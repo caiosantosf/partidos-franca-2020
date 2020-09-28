@@ -348,6 +348,8 @@ const getData = async _ => {
   getGraphRaca(racas, indexPartido)
   getGraphEscolaridade(niveisEscolaridade, indexPartido)
   getGraphGenero(generos, indexPartido)
+
+  document.getElementById('loading').style.display = 'none'
 }
 
 function removeAcento(text) {       

@@ -31,3 +31,29 @@ h3 {
   flex-flow: row wrap;
   justify-content: flex-start;
 }
+#loading {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  display: block;
+  opacity: 0.7;
+  background-color: rgb(0, 0, 0);
+  z-index: 99;
+  text-align: center;
+}
+
+#loading-image {
+  width: 430px;
+  height: 430px;
+  position: absolute; 
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  overflow: auto;
+}
