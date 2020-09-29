@@ -93,6 +93,51 @@ const getGraphIdade = (siglas, mediaIdade) => {
   chart.render()
 }
 
+const getGraph2016 = (siglas, diferenca) => {
+  const options = {
+    series: [{
+    name: 'Diferença na quantidade de candidatos',
+    data: diferenca
+  }],
+    chart: {
+    type: 'bar',
+    height: 700,
+    stacked: true,
+  },
+  plotOptions: {
+    bar: {
+      horizontal: true,
+    },
+  },
+  stroke: {
+    width: 1,
+    colors: ['#fff']
+  },
+  title: {
+    text: ' '
+  },
+  xaxis: {
+    categories: siglas,
+  },
+  yaxis: {
+    title: {
+      text: undefined
+    },
+  },
+  fill: {
+    opacity: 1
+  },
+  legend: {
+    position: 'top',
+    horizontalAlign: 'left',
+    offsetX: 40
+  }
+  }
+
+  let chart = new ApexCharts(document.querySelector("#chartEleicoes2016"), options);
+  chart.render()
+}
+
 const getGraphEleicoesAnteriores = (siglas, novatos, jaCandidatos, jaVereadores, atuaisVereadores) => {
   const options = {
     series: [{
@@ -226,12 +271,14 @@ const getGraphEscolaridade = (niveisEscolaridade, index) => {
 const getData = async _ => {
   const { partidos } = await fetchAsync('json\\partidos.json')
 
-  let siglas = [], mediaBens = [], mediaIdade = [], novatos = [], jaCandidatos = [], jaVereadores = [], atuaisVereadores = []
+  let siglas = [], mediaBens = [], mediaIdade = [], novatos = [], jaCandidatos = [], jaVereadores = [], atuaisVereadores = [], diferenca = []
 
   for (const [index, partido] of partidos.entries()) {
     getGraphRaca(partido.racas, index+1)
     getGraphGenero(partido.generos, index+1)
     getGraphEscolaridade(partido.niveisEscolaridade, index+1)
+
+    const diferencaPartido = partido.candidatosConta - partido.candidatosConta2016
 
     siglas.push(partido.sigla)
     mediaBens.push(partido.mediaBens)
@@ -240,8 +287,10 @@ const getData = async _ => {
     jaCandidatos.push(partido.jaCandidatosConta)
     jaVereadores.push(partido.jaVereadoresConta)
     atuaisVereadores.push(partido.atuaisVereadoresConta)
+    diferenca.push(diferencaPartido)
   }
 
+  getGraph2016(siglas, diferenca)
   getGraphEleicoesAnteriores(siglas, novatos, jaCandidatos, jaVereadores, atuaisVereadores)
   getGraphBens(siglas, mediaBens)
   getGraphIdade(siglas, mediaIdade)

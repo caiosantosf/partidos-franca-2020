@@ -4,6 +4,7 @@ const fetch = require('node-fetch')
 const cheerio = require('cheerio')
 
 const urlCandidatos = 'http://divulgacandcontas.tse.jus.br/divulga/rest/v1/candidatura/listar/2020/64254/2030402020/13/candidatos'
+const urlCandidatos2016 = 'http://divulgacandcontas.tse.jus.br/divulga/rest/v1/candidatura/listar/2016/64254/2/13/candidatos'
 
 const urlCandidato = id => {
   return `http://divulgacandcontas.tse.jus.br/divulga/rest/v1/candidatura/buscar/2020/64254/2030402020/candidato/${id}`
@@ -161,6 +162,19 @@ const setJsonPartidos = async _ => {
     if (0 !== index) {
       if (sigla !== candidato.nomeColigacao){
 
+        let siglaAntiga = sigla
+
+        if (sigla == 'CIDADANIA') siglaAntiga = 'PPS'
+        if (sigla == 'MDB') siglaAntiga = 'PMDB'
+        if (sigla == 'PODE') siglaAntiga = 'PTN'
+        if (sigla == 'REPUBLICANOS') siglaAntiga = 'PRB'
+        if (sigla == 'SOLIDARIEDADE') siglaAntiga = 'SD'
+        if (sigla == 'PATRIOTA') siglaAntiga = 'PEN'
+        if (sigla == 'PL') siglaAntiga = 'PR'
+
+        const jsonData2016 = await fetchAsync(urlCandidatos2016)
+        const candidatosConta2016 = jsonData2016.candidatos.filter(candidato => candidato.partido.sigla == siglaAntiga).length
+
         mediaBens = (totalDeBens / candidatosConta).toFixed(2)
         mediaIdade = (totalIdade / candidatosConta).toFixed(2)
         
@@ -169,6 +183,8 @@ const setJsonPartidos = async _ => {
                     novatosConta, 
                     jaCandidatosConta, 
                     jaVereadoresConta,
+                    candidatosConta,
+                    candidatosConta2016,
                     racas,
                     niveisEscolaridade,
                     generos,
@@ -226,12 +242,27 @@ const setJsonPartidos = async _ => {
 
   mediaBens = (totalDeBens / candidatosConta).toFixed(2)
   mediaIdade = (totalIdade / candidatosConta).toFixed(2)
+
+  let siglaAntiga = sigla
+
+  if (sigla == 'CIDADANIA') siglaAntiga = 'PPS'
+  if (sigla == 'MDB') siglaAntiga = 'PMDB'
+  if (sigla == 'PODE') siglaAntiga = 'PTN'
+  if (sigla == 'REPUBLICANOS') siglaAntiga = 'PRB'
+  if (sigla == 'SOLIDARIEDADE') siglaAntiga = 'SD'
+  if (sigla == 'PATRIOTA') siglaAntiga = 'PEN'
+  if (sigla == 'PL') siglaAntiga = 'PR'
+
+  const jsonData2016 = await fetchAsync(urlCandidatos2016)
+  const candidatosConta2016 = jsonData2016.candidatos.filter(candidato => candidato.partido.sigla == siglaAntiga).length
   
   partido = { sigla, 
               atuaisVereadoresConta, 
               novatosConta, 
               jaCandidatosConta, 
               jaVereadoresConta,
+              candidatosConta,
+              candidatosConta2016,
               racas,
               niveisEscolaridade,
               generos,
@@ -241,7 +272,7 @@ const setJsonPartidos = async _ => {
 
   partidos.push(partido)
   partidos = { partidos }
-  
+
   save(partidos, 'partidos')
 }
 
