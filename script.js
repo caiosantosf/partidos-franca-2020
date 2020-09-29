@@ -224,130 +224,27 @@ const getGraphEscolaridade = (niveisEscolaridade, index) => {
 }
 
 const getData = async _ => {
-  const { candidatos } = await fetchAsync('json\\candidatos.json')
+  const { partidos } = await fetchAsync('json\\partidos.json')
 
-  candidatos.sort((a, b) => {
-    if ( a.nomeColigacao < b.nomeColigacao ){
-      return -1;
-    }
-    if ( a.nomeColigacao > b.nomeColigacao ){
-      return 1;
-    }
-    return 0;
-  })
+  let siglas = [], mediaBens = [], mediaIdade = [], novatos = [], jaCandidatos = [], jaVereadores = [], atuaisVereadores = []
 
-  let siglas = [], novatos = [], jaCandidatos = [], jaVereadores = [], atuaisVereadores = [], racas = [0, 0, 0, 0]
-  let niveisEscolaridade = [0, 0, 0, 0, 0, 0], generos = [0, 0], mediaPartido = [], mediaIdade = []
-  let novatosConta = 0, jaCandidatosConta = 0, jaVereadoresConta = 0, atuaisVereadoresConta = 0, candidatosConta = 0
-  let sigla, indexPartido = 0, totalDeBens = 0, totalIdade = 0
+  for (const [index, partido] of partidos.entries()) {
+    getGraphRaca(partido.racas, index+1)
+    getGraphGenero(partido.generos, index+1)
+    getGraphEscolaridade(partido.niveisEscolaridade, index+1)
 
-  const atuais = await fetchAsync(`json\\atuais.json`)
-  const antigos = await fetchAsync(`json\\antigos.json`)
-
-  for (const [index, candidato] of candidatos.entries()) {
-    if (0 !== index) {
-      if (sigla !== candidato.nomeColigacao){
-        siglas.push(sigla)
-        atuaisVereadores.push(atuaisVereadoresConta)
-        novatos.push(novatosConta)
-        jaCandidatos.push(jaCandidatosConta)
-        jaVereadores.push(jaVereadoresConta)
-        mediaPartido.push((totalDeBens / candidatosConta).toFixed(2))
-        mediaIdade.push((totalIdade / candidatosConta).toFixed(2))
-
-        indexPartido++
-        getGraphRaca(racas, indexPartido)
-        getGraphEscolaridade(niveisEscolaridade, indexPartido)
-        getGraphGenero(generos, indexPartido)
-
-        novatosConta = 0, jaCandidatosConta = 0, jaVereadoresConta = 0, atuaisVereadoresConta = 0, candidatosConta = 0, totalDeBens = 0, totalIdade = 0
-        racas = [0, 0, 0, 0]
-        niveisEscolaridade = [0, 0, 0, 0, 0, 0]
-        generos = [0, 0]
-      }
-    }
-    sigla = candidato.nomeColigacao
-
-    novatosConta++
-    candidatosConta++
-
-    const nomeCompleto = removeAcento(candidato.nomeCompleto)
-
-    const candidatoDetalhes = await fetchAsync(`json\\${(candidato.id)}.json`)
-
-    const raca = removeAcento(candidatoDetalhes.descricaoCorRaca)
-    const escolaridade = removeAcento(candidatoDetalhes.grauInstrucao)
-    const genero = removeAcento(candidatoDetalhes.descricaoSexo)
-    totalDeBens += candidatoDetalhes.totalDeBens
-    const data = candidatoDetalhes.dataDeNascimento
-    totalIdade += calculateAge(data.substr(5, 2), data.substr(8, 2), data.substr(0, 4))
-
-    console.log(sigla + ' - ' + nomeCompleto + ' - ' + calculateAge(data.substr(5, 2), data.substr(8, 2), data.substr(0, 4)))
-
-    if (raca == 'branca') racas[0]++
-    if (raca == 'parda') racas[1]++
-    if (raca == 'preta') racas[2]++
-    if (raca == 'sem informacao') racas[3]++
-
-    if (escolaridade == 'ensino fundamental incompleto') niveisEscolaridade[0]++
-    if (escolaridade == 'ensino fundamental completo') niveisEscolaridade[1]++
-    if (escolaridade == 'ensino medio incompleto') niveisEscolaridade[2]++
-    if (escolaridade == 'ensino medio completo') niveisEscolaridade[3]++
-    if (escolaridade == 'superior incompleto') niveisEscolaridade[4]++
-    if (escolaridade == 'superior completo') niveisEscolaridade[5]++
-
-    if (genero == 'masc.') generos[0]++
-    if (genero == 'fem.') generos[1]++
-
-    let atual = false
-    for (vereador of atuais) {
-      if (vereador.nomeCompleto == nomeCompleto) {
-        atual = true
-      }
-    }
-    if (atual) {
-      atuaisVereadoresConta++
-      novatosConta--
-    } else {
-      let antigo = false
-      for (vereador of antigos) {
-        if (vereador.nomeCompleto == nomeCompleto) {
-          antigo = true
-        }
-      }
-      if (antigo) {
-        jaVereadoresConta++
-        novatosConta--
-      } else {
-        candidatoDetalhes.eleicoesAnteriores.every(eleicao => {
-          if ((eleicao.nrAno !== 2020) && (eleicao.cargo == 'Vereador')) {
-            jaCandidatosConta++
-            novatosConta--
-            return false
-          } else {
-            return true
-          }
-        })
-      }
-    }
+    siglas.push(partido.sigla)
+    mediaBens.push(partido.mediaBens)
+    mediaIdade.push(partido.mediaIdade)
+    novatos.push(partido.novatosConta)
+    jaCandidatos.push(partido.jaCandidatosConta)
+    jaVereadores.push(partido.jaVereadoresConta)
+    atuaisVereadores.push(partido.atuaisVereadoresConta)
   }
 
-  siglas.push(sigla)
-  atuaisVereadores.push(atuaisVereadoresConta)
-  novatos.push(novatosConta)
-  jaCandidatos.push(jaCandidatosConta)
-  jaVereadores.push(jaVereadoresConta)
-  mediaPartido.push((totalDeBens / candidatosConta).toFixed(2))
-  mediaIdade.push((totalIdade / candidatosConta).toFixed(2))
-
   getGraphEleicoesAnteriores(siglas, novatos, jaCandidatos, jaVereadores, atuaisVereadores)
-  getGraphBens(siglas, mediaPartido)
+  getGraphBens(siglas, mediaBens)
   getGraphIdade(siglas, mediaIdade)
-
-  indexPartido++
-  getGraphRaca(racas, indexPartido)
-  getGraphEscolaridade(niveisEscolaridade, indexPartido)
-  getGraphGenero(generos, indexPartido)
 
   document.getElementById('loading').style.display = 'none'
 }
@@ -361,22 +258,6 @@ function removeAcento(text) {
   text = text.replace(new RegExp('[ÚÙÛ]','gi'), 'u');
   text = text.replace(new RegExp('[Ç]','gi'), 'c');
   return text;                 
-}
-
-function calculateAge(birthMonth, birthDay, birthYear) {
-  var currentDate = new Date();
-  var currentYear = currentDate.getFullYear();
-  var currentMonth = currentDate.getMonth();
-  var currentDay = currentDate.getDate(); 
-  var calculatedAge = currentYear - birthYear;
-
-  if (currentMonth < birthMonth - 1) {
-      calculatedAge--;
-  }
-  if (birthMonth - 1 == currentMonth && currentDay < birthDay) {
-      calculatedAge--;
-  }
-  return calculatedAge;
 }
 
 getData()
