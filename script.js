@@ -204,7 +204,7 @@ const getGraphRaca = (racas, index) => {
       breakpoint: 480,
       options: {
         chart: {
-          width: 200
+          width: 320
         },
         legend: {
           position: 'bottom'
@@ -229,7 +229,7 @@ const getGraphGenero = (generos, index) => {
       breakpoint: 480,
       options: {
         chart: {
-          width: 200
+          width: 320
         },
         legend: {
           position: 'bottom'
@@ -250,12 +250,13 @@ const getGraphEscolaridade = (niveisEscolaridade, index) => {
       width: 380,
       type: 'pie',
     },
-    labels: ['Ensino fundamental incompleto', 'Ensino fundamental completo', 'Ensino medio incompleto', 'Ensino medio completo', 'Superior incompleto', 'Superior completo'],
+    labels: ['Fund. incompleto', 'Fund. completo', 'Medio incompleto', 'Medio completo', 'Sup. incompleto', 'Sup. completo'],
     responsive: [{
-      breakpoint: 480,
+      breakpoint: 400,
       options: {
         chart: {
-          width: 200
+          width: 320
+          
         },
         legend: {
           position: 'bottom'
