@@ -256,7 +256,6 @@ const getGraphEscolaridade = (niveisEscolaridade, index) => {
       options: {
         chart: {
           width: 320
-          
         },
         legend: {
           position: 'bottom'
@@ -270,7 +269,7 @@ const getGraphEscolaridade = (niveisEscolaridade, index) => {
 }
 
 const getData = async _ => {
-  const { partidos } = await fetchAsync('json\\partidos.json')
+  const { partidos } = await fetchAsync('data\\json\\partidos.json')
 
   let siglas = [], mediaBens = [], mediaIdade = [], novatos = [], jaCandidatos = [], jaVereadores = [], atuaisVereadores = [], diferenca = []
 
@@ -296,7 +295,8 @@ const getData = async _ => {
   getGraphBens(siglas, mediaBens)
   getGraphIdade(siglas, mediaIdade)
 
-  document.getElementById('loading').style.display = 'none'
+  setTimeout(_ => document.getElementById('loading').style.display = 'none', 500)
+  
 }
 
 function removeAcento(text) {       

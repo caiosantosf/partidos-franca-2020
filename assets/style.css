@@ -38,12 +38,10 @@ h3 {
   left: 0;
   position: fixed;
   display: block;
-  opacity: 0.7;
-  background-color: rgb(0, 0, 0);
+  background-color:#353535;
   z-index: 99;
   text-align: center;
 }
-
 #loading-image {
   width: 430px;
   height: 430px;

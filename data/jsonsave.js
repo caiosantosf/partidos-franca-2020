@@ -32,8 +32,8 @@ const fetchAsyncHtml = async url => {
 
 const getDataTSE = async _ => {
   let jsonData = await fetchAsync(urlCandidatos)
-  const atuais = await fetchAsync('https://raw.githubusercontent.com/caiosantosf/partidos-franca-2020/master/json/atuais.json')
-  const antigos = await fetchAsync('https://raw.githubusercontent.com/caiosantosf/partidos-franca-2020/master/json/antigos.json')
+  const atuais = await fetchAsyncLocal('\\data\\json\\atuais.json')
+  const antigos = await fetchAsyncLocal('\\data\\json\\antigos.json')
 
   const { candidatos } = jsonData
   let candidatosNovo = []
@@ -138,7 +138,7 @@ const getDataCamara = async _ => {
 
 const setJsonPartidos = async _ => {
 
-  const json = await fetchAsyncLocal('\\json\\candidatos.json')
+  const json = await fetchAsyncLocal('\\data\\json\\candidatos.json')
   const { candidatos } = json
 
   candidatos.sort((a, b) => {
@@ -317,7 +317,7 @@ const save = (jsonData, fileName) => {
 }
 
 const main = async _ => {
-  //await getDataCamara()
+  await getDataCamara()
   await getDataTSE()
   await setJsonPartidos()
 }
